@@ -1,4 +1,7 @@
 # go-executor
+```
+go get github.com/fdanismaz/go-executor/executor
+```
 
 ## Parallel Executor
 The parallel executor is capable of running multiple independent tasks in separate go routines
