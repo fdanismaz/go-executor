@@ -11,7 +11,9 @@ func NewParallel(concurrencyLimit int64, continueOnError bool) Executor {
 }
 ```
 The `NewParallel` function creates takes the two following parameters:
-- `concurrencyLimit`: limits the number of tasks to be executed at the same time.
+- `concurrencyLimit`: limits the number of tasks to be executed at the same time. If you have 100 
+  tasks to be executed and if you want max. 3 tasks to be executed at the same time, in that
+  case the 4th task will not be started unless one of the first three task is completed.
 - `continueOnError`: give `false` to stop the executor when a task fails. Give `true` otherwise.
 
 
@@ -20,6 +22,8 @@ exec := executor.NewParallel(3, true)
 exec.Submit(task1)
 exec.Submit(task2)
 exec.Submit(task3)
+exec.Submit(task4)
+exec.Submit(task5)
 ...
 err := exec.execute()
 ```
